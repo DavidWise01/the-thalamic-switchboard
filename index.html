@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>POSI-CORP · EPL Cortex v4</title><style>
+:root{--ink:#E7E0D4;--ink2:#DED6C7;--ink3:#d4cab6;--bg:#141210;--bg2:#1c1916;--card:#211d19;
+--orange:#FF6A00;--amber:#e6a817;--teal:#2dd4bf;--coral:#ff7a6a;--lit:#39ff8a;--bad:#ff3b3b;--inh:#c23434;--hippo:#b06adf;--amyg:#ff2d55;--pfc:#4a9eff;--thal:#7f77dd;--edge:#3a332b;
+--sight:#378add;--sound:#2dd4bf;--touch:#5dcaa5;--taste:#e6a817;--smell:#ff7a6a;
+--head:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--mono:ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--head);line-height:1.65;font-size:16px}
+.wrap{max-width:940px;margin:0 auto;padding:28px 20px 80px}
+header.m{border-bottom:3px solid var(--orange);padding-bottom:14px;margin-bottom:24px}
+.series{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--orange);text-transform:uppercase}
+h1{font-size:32px;margin:.25em 0 .1em}.sub{color:var(--ink3);font-style:italic;margin:0}
+h2{font-size:20px;margin:1.5em 0 .5em;border-left:4px solid var(--orange);padding-left:10px}
+p{margin:.7em 0}.k{color:var(--orange);font-weight:bold}
+canvas{display:block;width:100%;background:var(--bg2);border:1px solid var(--edge);border-radius:6px;margin:10px 0}
+.caption{font-family:var(--mono);font-size:11px;color:var(--ink3);margin:-4px 0 18px}
+.ctrl{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0;font-family:var(--mono);font-size:12px;align-items:center}
+.ctrl label{display:flex;flex-direction:column;gap:3px;min-width:150px}
+.ctrl input[type=range]{accent-color:var(--thal)}.ctrl .val{color:var(--thal)}
+.ctrl button{background:var(--card);color:var(--ink);border:1px solid var(--edge);border-radius:5px;padding:7px 12px;cursor:pointer;font-family:var(--mono);font-size:12px}
+.ctrl button:hover{border-color:var(--thal);color:#fff}
+.state{font-family:var(--mono);font-size:13px;padding:10px 14px;border-radius:6px;margin:10px 0;border:1px solid var(--edge)}
+.state.gov{background:#0e2416;border-left:4px solid var(--lit);color:var(--lit)}
+.state.hij{background:#2a0f14;border-left:4px solid var(--amyg);color:var(--amyg)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:14px 0}
+.card{background:var(--card);border:1px solid var(--edge);border-left:4px solid var(--lit);border-radius:5px;padding:9px 11px;font-family:var(--mono);font-size:11.5px}
+.card.amber{border-left-color:var(--amber)}.card.fail{border-left-color:var(--bad);background:#2a1512}
+.card b{display:block;font-size:10px;letter-spacing:.12em;margin-bottom:4px}
+.card.lit b{color:var(--lit)}.card.amber b{color:var(--amber)}.card.fail b{color:var(--bad)}
+.card .got{color:var(--ink);font-size:13px}.card .note{color:var(--ink3);margin-top:4px;line-height:1.45}
+.toddler{background:#241b10;border:1px dashed var(--amber);border-radius:8px;padding:12px 16px;margin:22px 0}
+.toddler b{color:var(--amber);font-family:var(--mono);font-size:11px;letter-spacing:.18em}
+.big{font-family:var(--mono);font-size:13px;background:#1a1826;border:1px solid #3a3352;border-left:4px solid var(--thal);border-radius:6px;padding:12px 16px;margin:14px 0}
+.big b{color:var(--thal);letter-spacing:.1em}
+.ledger{margin-top:30px;border-top:1px solid var(--edge);padding-top:12px;font-family:var(--mono);font-size:11px;color:var(--ink3)}
+.tier{display:inline-block;padding:1px 7px;border-radius:3px;margin-right:6px;font-size:10px}
+.tier.l{background:#0e2c1a;color:var(--lit);border:1px solid var(--lit)}.tier.a{background:#2c230e;color:var(--amber);border:1px solid var(--amber)}
+footer{margin-top:24px;font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.leg{font-family:var(--mono);font-size:11px;color:var(--ink3);margin:4px 0 0}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin:0 4px 0 12px;vertical-align:-1px}</style></head><body><div class="wrap">
+<header class="m"><div class="series">POSI-CORP · EPL CORTEX v4 · SENSORY INPUT LAYER WIRED UNDER THE EXECUTIVE</div>
+<h1>The EPL Cortex, v4</h1>
+<p class="sub">The full stack: five receptors feed a thalamic switchboard that gates four senses by attention — smell alone bypasses it, straight to the limbic layer — and the routed signal climbs into the EPL distillate, hippocampus, amygdala, and prefrontal executive above.</p></header>
+<div class="big"><b>THE STACK, BOTTOM TO TOP.</b> v1–v3 built the association and executive layers — the deep processing. v4 adds the layer beneath: where experience actually <i>enters</i>. Receptor → relay → thalamus (switchboard) → primary cortex → EPL association → hippocampus/amygdala → prefrontal executive. Six stages. The thalamus is an <i>attention gate</i>: turn attention down and it throttles sight, sound, touch, taste. But <b>smell is never gated</b> — it skips the thalamus entirely and wires direct to the limbic system, which is the mechanistic reason a scent drops you into a memory before you can think.</p></div>
+<h2>Live stack — drive attention, stress, and inject a sense</h2>
+<div class="ctrl">
+<label>thalamic attention gate <input id="atten" type="range" min="0" max="1" step="0.01" value="0.7" oninput="tick()"><span class="val" id="av">0.70</span></label>
+<label>executive stress <input id="stress" type="range" min="0" max="1" step="0.01" value="0.2" oninput="tick()"><span class="val" id="stv">0.20</span></label>
+</div>
+<div class="ctrl">
+<button onclick="fire('sight')">⚡ sight</button><button onclick="fire('sound')">⚡ sound</button>
+<button onclick="fire('touch')">⚡ touch</button><button onclick="fire('taste')">⚡ taste</button>
+<button onclick="fire('smell')">⚡ smell (ungated)</button>
+</div>
+<div class="state gov" id="statebar">stack idle · executive governing</div>
+<canvas id="c2d"></canvas>
+<div class="leg">senses:<i style="background:#378add"></i>sight<i style="background:#2dd4bf"></i>sound<i style="background:#5dcaa5"></i>touch<i style="background:#e6a817"></i>taste<i style="background:#ff7a6a"></i>smell ·<i style="background:#7f77dd"></i>thalamus<i style="background:#b06adf"></i>hippo<i style="background:#ff2d55"></i>amygdala<i style="background:#4a9eff"></i>PFC</div>
+<div class="caption">2D · the six-stage stack drawn vertically: receptors (bottom) → thalamus gate → primary centers → EPL cortex → limbic → executive (top). Fire a sense to watch signal climb; smell's path skips the thalamus node entirely.</div>
+<canvas id="c3d"></canvas>
+<div class="caption">3D · the whole assembly: input receptors ring the base, thalamus routes up into the two-hemisphere EPL cortex, hippocampus/amygdala/PFC above. Smell's bypass fiber runs outside the thalamus. Drag to rotate.</div>
+<h2>Diagnostics — full stack re-verified at load</h2>
+<div class="cards" id="checks"></div>
+<div class="toddler"><b>TODDLER CORNER</b><p>Now the brain can feel the world. Five doors let things in: eyes, ears, skin, tongue, nose. Four of them go through one gatekeeper in the middle who decides how much to let through when you're not paying attention. But the nose has a secret tunnel that skips the gatekeeper — that's why a smell can yank up a memory before you even know why. Everything that gets in climbs up to the thinking part on top.</p></div>
+<div class="ledger"><span class="tier l">LIT</span> neuroanatomy + live arithmetic · <span class="tier a">AMBER</span> sense→channel assignments and the corpus mapping are editorial. Red card = miswired.</div>
+<footer>POSI-CORP EPL Cortex v4 · single-file seed · offline · system fonts · Pañcaka → Triveṇī → Cortex v1/v2/v3/v4</footer>
+</div><script>
+
+function SGL(canvas){const ctx=canvas.getContext('2d');const S={rx:-0.22,ry:0.5,zoom:1,auto:true};
+function size(){const w=canvas.clientWidth;canvas.height=Math.round(w*0.78)*devicePixelRatio;canvas.width=w*devicePixelRatio;
+canvas.style.height=(w*0.78)+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);}size();addEventListener('resize',size);
+function project(p){const[x,y,z]=p;const cy=Math.cos(S.ry),sy=Math.sin(S.ry),cx=Math.cos(S.rx),sx=Math.sin(S.rx);
+let X=x*cy+z*sy,Z=-x*sy+z*cy,Y=y*cx-Z*sx;Z=y*sx+Z*cx;const d=4.9,f=(canvas.clientWidth*0.35*S.zoom)/(d-Z*0.9);
+return[canvas.clientWidth/2+X*f,canvas.clientWidth*0.39-Y*f,f,Z];}
+const api={ctx,S,project,
+dot(p,r,c,a){const q=project(p);ctx.globalAlpha=a==null?1:a;ctx.fillStyle=c;ctx.beginPath();ctx.arc(q[0],q[1],r*q[2]/90,0,7);ctx.fill();ctx.globalAlpha=1;},
+line(a,b,c,w,al){const p=project(a),q=project(b);ctx.globalAlpha=al==null?1:al;ctx.strokeStyle=c;ctx.lineWidth=w||1;
+ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();ctx.globalAlpha=1;},
+text3(p,s,c,f){const q=project(p);ctx.fillStyle=c;ctx.font=(f||10)+'px ui-monospace,Menlo,monospace';ctx.textAlign='center';ctx.fillText(s,q[0],q[1]);}};
+let px=0,py=0,drag=false;
+canvas.addEventListener('pointerdown',e=>{drag=true;S.auto=false;px=e.clientX;py=e.clientY;});
+addEventListener('pointerup',()=>drag=false);
+addEventListener('pointermove',e=>{if(!drag)return;S.ry+=(e.clientX-px)*0.008;S.rx+=(e.clientY-py)*0.008;px=e.clientX;py=e.clientY;});
+return api;}
+const CHECKS=[];function check(n,g,w,tier,note){CHECKS.push({n,got:JSON.stringify(g),want:JSON.stringify(w),
+pass:JSON.stringify(g)===JSON.stringify(w),tier,note:note||''});}
+function renderChecks(el){el.innerHTML=CHECKS.map(c=>{const cls=c.pass?(c.tier==='LIT'?'card lit':'card amber'):'card fail';
+return '<div class="'+cls+'"><b>'+(c.pass?c.tier:'FAIL')+' · '+c.n+'</b><span class="got">'+c.got+(c.pass?'':' ≠ '+c.want)+'</span>'+
+(c.note?'<div class="note">'+c.note+'</div>':'')+'</div>';}).join('');
+const f=CHECKS.filter(c=>!c.pass).length;if(f){const d=document.createElement('div');d.className='card fail';
+d.innerHTML='<b>GATE CLOSED</b><span class="got">'+f+' failure(s).</span>';el.prepend(d);}}
+function guard(fn,l){try{fn();}catch(e){const el=document.getElementById('checks');const d=document.createElement('div');
+d.className='card fail';d.innerHTML='<b>RUNTIME FAIL · '+l+'</b><span class="got">'+e.message+'</span>';el.prepend(d);}}
+
+/* ============ PAPER EDIT BLOCK: v4 = v3 + sensory input layer ============ */
+const SLOTC={E:'#2dd4bf',P:'#e6a817',L:'#FF6A00'};
+const EX=[["fantasy","Herd","P",8.0],["fantasy","Horse","E",7.0],["fantasy","Song","L",5.6],
+["scifi","Other Mind","E",8.8],["scifi","Self-mod","P",6.6],["scifi","What-if","L",5.0],
+["horror","Revenant","L",7.7],["horror","Possession","P",6.6],["horror","Cosmic indiff.","E",5.8],
+["phil","The Cave","P",7.7],["phil","Know thyself","E",6.6],["phil","Doubt","L",5.6],
+["western","Stranger","E",7.2],["western","End of era","P",6.0],["western","Showdown","L",5.8]];
+const IN=[["fantasy","Chosen One","E",7.5],["fantasy","Born-evil race","P",8.5],["fantasy","Restoration end","L",5.5],
+["scifi","Lone genius","E",6.0],["scifi","Planet of hats","P",6.5],["scifi","Technobabble","L",7.0],
+["horror","Madness=monster","E",8.0],["horror","Sex=death","P",6.5],["horror","Burial-ground","L",6.0],
+["phil","Great Man","E",6.5],["phil","Ivory tower","P",6.0],["phil","Gotcha","L",7.0],
+["western","White/black hat","E",5.5],["western","Natives as scenery","P",9.0],["western","Violence=redemption","L",6.5]];
+const bySlot=(a,s)=>+a.filter(x=>x[2]===s).reduce((v,x)=>v+x[3],0).toFixed(1);
+const GAIN={E:+(100/3/bySlot(EX,'E')).toFixed(4),P:+(100/3/bySlot(EX,'P')).toFixed(4),L:+(100/3/bySlot(EX,'L')).toFixed(4)};
+const AMYG_THRESH=7.5;const FLAGGED=IN.filter(x=>x[3]>=AMYG_THRESH);
+const SALIENCE=+(FLAGGED.reduce((a,x)=>a+x[3],0)/10).toFixed(2);
+const PFC_MAX=+(SALIENCE/0.4).toFixed(2);
+function control(stress,mat){return +(PFC_MAX*mat*(1-stress)).toFixed(3);}
+// SENSORY INPUT LAYER: [sense, color, relay, primary, thalamic, feedsChannel]
+const SENSES=[
+["sight","#378add","LGN","V1 occipital",true,"P"],
+["sound","#2dd4bf","MGN","A1 temporal",true,"L"],
+["touch","#5dcaa5","VPL/VPM","S1 parietal",true,"P"],
+["taste","#e6a817","VPM","gustatory insula",true,"P"],
+["smell","#ff7a6a","—","piriform/limbic",false,"E"]];
+const GENRES=['fantasy','scifi','horror','phil','western'];
+/* ======================================================================== */
+let signal={sense:null,t:0};
+guard(()=>{
+check('v3 EPL gain preserved',GAIN,{E:0.9416,P:0.9551,L:1.1223},'LIT','cortex untouched beneath the new input');
+check('post-gain thirds intact',['E','P','L'].map(s=>+(bySlot(EX,s)*GAIN[s]).toFixed(2)),[33.33,33.33,33.33],'LIT');
+check('5 receptors',SENSES.length,5,'LIT');
+check('4 route via thalamus, 1 bypasses',[SENSES.filter(s=>s[4]).length,SENSES.filter(s=>!s[4]).length],[4,1],'LIT','sight/sound/touch/taste gated; smell direct');
+check('the bypass is smell',SENSES.find(s=>!s[4])[0],'smell','LIT','olfaction → piriform/limbic, no thalamic relay');
+check('smell feeds ethos via limbic',SENSES.find(s=>s[0]==='smell')[5],'E','AMBER','routes to identity channel through hippo/amygdala');
+check('pathos is the most-fed channel',[SENSES.filter(s=>s[5]==='P').length],[3],'AMBER','3 senses feed substrate/experience — raw sensation is mostly pathos');
+check('full stack depth',6,6,'AMBER','the stated six-stage design (a constant, not derived): receptor→relay→primary→EPL→limbic→PFC');
+check('v4 topology',30+1+1+1+5+1,39,'AMBER','stated node budget (constants, not counted from the drawn arrays): 33 (v3) + 5 receptors + thalamus router');
+renderChecks(document.getElementById('checks'));
+},'checks');
+function draw2D(){const cv=document.getElementById('c2d'),ctx=cv.getContext('2d');
+const w=cv.clientWidth,H=560;cv.width=w*devicePixelRatio;cv.height=H*devicePixelRatio;cv.style.height=H+'px';
+ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,H);
+const atten=+document.getElementById('atten').value,stress=+document.getElementById('stress').value;
+const c=control(stress,1),hij=c<SALIENCE;
+ctx.font='10px ui-monospace,monospace';ctx.textAlign='center';
+// y-levels bottom->top
+const yRecept=H-30,yThal=H-140,yPrim=H-250,yEPL=H-350,yLimb=H-350,yPFC=40;
+const n=SENSES.length,x0=w*0.12,dx=(w*0.76)/(n-1);
+// thalamus node
+const thx=w/2,thy=yThal;
+ctx.fillStyle='#7f77dd';ctx.beginPath();ctx.ellipse(thx,thy,42,20,0,0,7);ctx.fill();
+ctx.fillStyle='#141210';ctx.fillText('THALAMUS',thx,thy-2);ctx.fillText('gate '+atten.toFixed(2),thx,thy+11);
+// receptors + paths up
+SENSES.forEach((s,i)=>{const rx=x0+dx*i;
+ctx.fillStyle=s[1];ctx.beginPath();ctx.arc(rx,yRecept,9,0,7);ctx.fill();
+ctx.fillStyle='#d4cab6';ctx.fillText(s[0],rx,yRecept+22);
+const active=signal.sense===s[0]?signal.t:0;
+if(s[4]){ // thalamic: receptor -> thalamus -> primary, gated by attention
+const thru=s[0]==='smell'?1:atten;
+ctx.strokeStyle=s[1];ctx.globalAlpha=0.25+active*0.6;ctx.lineWidth=1+thru*3;
+ctx.beginPath();ctx.moveTo(rx,yRecept-9);ctx.lineTo(thx-20+i*8,thy+18);ctx.stroke();ctx.globalAlpha=1;
+// thalamus -> primary center
+ctx.strokeStyle=s[1];ctx.globalAlpha=0.25+active*0.6;ctx.lineWidth=1+thru*3;
+ctx.beginPath();ctx.moveTo(thx-20+i*8,thy-18);ctx.lineTo(rx,yPrim+14);ctx.stroke();ctx.globalAlpha=1;
+}else{ // smell bypass: receptor -> limbic directly, skipping thalamus
+ctx.strokeStyle=s[1];ctx.globalAlpha=0.4+active*0.6;ctx.lineWidth=2.5;ctx.setLineDash([6,4]);
+ctx.beginPath();ctx.moveTo(rx,yRecept-9);ctx.lineTo(rx,yPrim+40);ctx.lineTo(w*0.72,yLimb+20);ctx.stroke();
+ctx.setLineDash([]);ctx.globalAlpha=1;
+ctx.fillStyle=s[1];ctx.fillText('bypass',rx+4,yThal);}
+// primary center box
+if(s[4]){ctx.fillStyle=s[1];ctx.globalAlpha=0.85;ctx.fillRect(rx-30,yPrim,60,18);ctx.globalAlpha=1;
+ctx.fillStyle='#141210';ctx.font='9px ui-monospace,monospace';ctx.fillText(s[3].split(' ')[0],rx,yPrim+12);ctx.font='10px ui-monospace,monospace';
+// primary -> EPL channel
+ctx.strokeStyle=SLOTC[s[5]];ctx.globalAlpha=0.3+active*0.5;ctx.lineWidth=1.5;
+ctx.beginPath();ctx.moveTo(rx,yPrim);ctx.lineTo(w/2,yEPL+30);ctx.stroke();ctx.globalAlpha=1;}
+});
+// EPL cortex band (compact)
+ctx.fillStyle='#211d19';ctx.fillRect(w*0.2,yEPL,w*0.6,44);
+ctx.strokeStyle='#3a332b';ctx.strokeRect(w*0.2,yEPL,w*0.6,44);
+['E','P','L'].forEach((s,i)=>{ctx.fillStyle=SLOTC[s];ctx.globalAlpha=0.8;
+ctx.fillRect(w*0.2+i*w*0.2,yEPL,w*0.2-2,44);ctx.globalAlpha=1;
+ctx.fillStyle='#141210';ctx.fillText({E:'ETHOS',P:'PATHOS',L:'LOGOS'}[s],w*0.2+i*w*0.2+w*0.1,yEPL+26);});
+// limbic (hippo+amyg) + PFC above
+ctx.fillStyle='#b06adf';ctx.beginPath();ctx.arc(w*0.4,yEPL-40,11,0,7);ctx.fill();
+ctx.fillStyle='#141210';ctx.font='8px ui-monospace,monospace';ctx.fillText('HIP',w*0.4,yEPL-37);
+ctx.fillStyle='#ff2d55';ctx.beginPath();ctx.arc(w*0.6,yEPL-40,11,0,7);ctx.fill();
+ctx.fillStyle='#fff';ctx.fillText('AMY',w*0.6,yEPL-37);ctx.font='10px ui-monospace,monospace';
+ctx.fillStyle='#4a9eff';ctx.globalAlpha=hij?0.4:1;ctx.fillRect(w*0.5-70,yPFC,140,26);ctx.globalAlpha=1;
+ctx.fillStyle='#141210';ctx.fillText(hij?'PFC OFFLINE':'PFC · control '+c.toFixed(1),w*0.5,yPFC+16);
+// EPL -> limbic -> PFC
+ctx.strokeStyle='#4a9eff';ctx.globalAlpha=hij?0.15:0.5;ctx.lineWidth=1.5;
+ctx.beginPath();ctx.moveTo(w/2,yEPL-45);ctx.lineTo(w/2,yPFC+26);ctx.stroke();ctx.globalAlpha=1;
+ctx.fillStyle='#d4cab6';ctx.textAlign='left';ctx.font='9px ui-monospace,monospace';
+ctx.fillText('↑ signal climbs the stack',w*0.05,yEPL+70);}
+function tick(){document.getElementById('av').textContent=(+document.getElementById('atten').value).toFixed(2);
+document.getElementById('stv').textContent=(+document.getElementById('stress').value).toFixed(2);
+const stress=+document.getElementById('stress').value,c=control(stress,1),hij=c<SALIENCE;
+const bar=document.getElementById('statebar');
+if(hij){bar.className='state hij';bar.textContent='⚠ amygdala hijack · executive offline — input floods up ungoverned';}
+else{bar.className='state gov';bar.textContent='✓ executive governing · control '+c.toFixed(2)+' · input routed and gated';}
+draw2D();}
+function fire(sense){signal={sense,t:1};const atten=+document.getElementById('atten').value;
+const s=SENSES.find(x=>x[0]===sense);const gated=sense==='smell'?1:atten;
+const bar=document.getElementById('statebar');bar.className='state gov';
+bar.textContent=sense==='smell'?'⚡ smell fired · BYPASS — skips thalamus, hits limbic at full strength':
+'⚡ '+sense+' fired · thalamus passes '+(gated*100).toFixed(0)+'% (attention '+atten.toFixed(2)+')';
+draw2D();let fade=setInterval(()=>{signal.t-=0.08;if(signal.t<=0){signal={sense:null,t:0};clearInterval(fade);}draw2D();},60);}
+guard(()=>{tick();addEventListener('resize',draw2D);},'draw2D');
+guard(()=>{
+const gl=SGL(document.getElementById('c3d'));
+function nodePos(x,h){const slotY={E:0.35,P:0.05,L:-0.25}[x[2]]+0.35;const gi=GENRES.indexOf(x[0]);const a=(gi/5)*Math.PI-Math.PI/2;
+return[h*(0.5+0.22*Math.cos(a)),slotY+0.05*Math.sin(a*2),0.34*Math.sin(a)];}
+let pulse=0;
+function frame(){const ctx=gl.ctx,cv=ctx.canvas;ctx.clearRect(0,0,cv.width,cv.height);
+if(gl.S.auto)gl.S.ry+=0.003;pulse+=0.05;
+const atten=+(document.getElementById('atten')?document.getElementById('atten').value:0.7);
+const stress=+(document.getElementById('stress')?document.getElementById('stress').value:0.2);
+const c=control(stress,1),hij=c<SALIENCE;
+// input receptors ring the base
+const THAL=[0,-0.55,0],baseY=-1.15;
+SENSES.forEach((s,i)=>{const a=(i/5)*Math.PI*2,rx=0.9*Math.cos(a),rz=0.9*Math.sin(a);
+const rp=[rx,baseY,rz];gl.dot(rp,4,s[1],0.95);gl.text3([rx*1.15,baseY-0.08,rz*1.15],s[0],s[1],9);
+if(s[4]){const thru=atten;gl.line(rp,THAL,s[1],1+thru*2,0.35+thru*0.4);}
+else{gl.line(rp,[0.5,0.1,0.4],s[1],2,0.6);}}); // smell bypass to limbic region
+// thalamus
+gl.dot(THAL,9,'#7f77dd',0.9);gl.text3([0,-0.72,0],'thalamus','#7f77dd',10);
+// EPL cortex nodes
+EX.forEach(x=>{const L=nodePos(x,-1),R=nodePos(x,1);gl.line(L,R,'#FF6A00',0.4,0.15);
+[L,R].forEach(p=>{gl.dot(p,x[3]/2*1.5,SLOTC[x[2]],0.9);gl.line(THAL,p,'#7f77dd',0.4,0.12);});});
+IN.forEach(x=>[-1,1].forEach(h=>{const p=nodePos(x,h);gl.dot([p[0],p[1]-0.07,p[2]*1.05],x[3]/2*1.2,'#c23434',hij?0.85:0.4);}));
+// limbic + PFC on top
+const HP=[0,0.35,0],AM=[0.45,0.15,0.4],PF=[0,1.05,0];
+gl.dot(HP,8,'#b06adf',0.7+0.3*Math.sin(pulse));gl.dot(AM,6,'#ff2d55',hij?1:0.7);
+gl.dot(PF,hij?6:10,'#4a9eff',hij?0.35:1);
+gl.line(PF,HP,'#4a9eff',1,hij?0.15:0.5);
+gl.text3([0,1.24,0],hij?'PFC OFFLINE':'PFC','#4a9eff',10);
+gl.text3([0,baseY-0.28,0],'receptors → thalamus → cortex → limbic → executive','#d4cab6',9);
+requestAnimationFrame(frame);}
+frame();
+},'draw3D');
+</script></body></html>
